@@ -4,7 +4,7 @@ export function isEmpty(val?: any) {
   return (val == undefined || val == null)
 }
 
-export function dateToDay(date?: string | number) {
-  if(isEmpty(date)) date = ''
-  return numToDay[(new Date(date)).getDay()]
+export function dateToDay(dateStr: string | number) {
+  if(isEmpty(dateStr)) dateStr = ''
+  return numToDay[(new Date(dateStr)).getDay()]
 }

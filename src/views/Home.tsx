@@ -103,7 +103,7 @@ export default function Home () {
       </div>
       <div className='weather-3day'>
         {weather3d.map((weatherd: IWeatherDaily) => (<div key={weatherd.fxDate} className='weather-daily'>
-          <span>{dateToDay(weatherd.fxDate)} </span>
+          <span>{dateToDay(weatherd.fxDate || "")} </span>
           <span> {weatherd.humidity} </span>
           <img src={imgBasePath + weatherd.iconDay + '.png'} />
           <span> {weatherd.tempMax}&#176;</span>

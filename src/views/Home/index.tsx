@@ -1,16 +1,18 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { IState } from '../../store/constants'
+import { FETCH_WEATHER_3D, FETCH_WEATHER_NOW, IState } from '../../store/constants'
 import { ICity } from '../../store/city'
 import Main from './Main'
 import Daily3 from './Daily3'
 import Header from '../../compnents/Header'
+import { useEffect } from 'react'
+import { IWeatherDaily, IWeatherNow } from '../../store/weather'
 
-export default function Home () {
-  const homeCss = css`
+export default function Home() {
+    const homeCss = css`
     width: 100%;
     height: 100%;
     font-size: .04rem;
@@ -28,8 +30,16 @@ export default function Home () {
       background: inherit;
       filter: blur(4px);
     }
-`
+  `
+  const dispatch = useDispatch()
   const curCity: ICity = useSelector((state: IState) => state.city.city)
+  const weatherNow: IWeatherNow = useSelector((state: IState) => state.weather.now)
+  const weather3d: Array<IWeatherDaily> = useSelector((state: IState) => state.weather.daily3)
+  const refreshWeather = () => {
+    dispatch({ type: FETCH_WEATHER_NOW })
+    dispatch({ type: FETCH_WEATHER_3D })
+  }
+  useEffect(refreshWeather, [])
 
   return (
     <div css={homeCss}>
@@ -44,8 +54,8 @@ export default function Home () {
           <Link to='/citylist'>菜单</Link>
         </div>
       </Header>
-      <Main />
-      <Daily3 />
+      <Main handleClick={refreshWeather} weatherNow={weatherNow} />
+      <Daily3 weather3d={weather3d} />
     </div>
   )
 }

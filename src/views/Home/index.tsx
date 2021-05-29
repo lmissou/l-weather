@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
+import { ReactElement, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -8,11 +9,10 @@ import { ICity } from '../../store/city'
 import Main from './Main'
 import Daily3 from './Daily3'
 import Header from '../../compnents/Header'
-import { useEffect } from 'react'
 import { IWeatherDaily, IWeatherNow } from '../../store/weather'
 
-export default function Home() {
-    const homeCss = css`
+export default function Home(): ReactElement {
+  const homeCss = css`
     width: 100%;
     height: 100%;
     font-size: .04rem;

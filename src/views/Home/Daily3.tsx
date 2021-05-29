@@ -4,7 +4,7 @@ import { imgBasePath } from '../../constant'
 import { IWeatherDaily } from '../../store/weather'
 import { dateToDay } from '../../utils'
 
-export default function Daily3 ({ weather3d }: { weather3d: Array<IWeatherDaily> }) {
+export default function Daily3({ weather3d }: { weather3d: Array<IWeatherDaily> }) {
   const weatherDailyCss = css`
     height: .1rem;
     img {
@@ -19,7 +19,7 @@ export default function Daily3 ({ weather3d }: { weather3d: Array<IWeatherDaily>
     border-radius: 5px;
     background-image: linear-gradient(to right, red, blue);
   `
-  
+
   return (
     <div css={css`
       width: 100%;

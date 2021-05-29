@@ -1,15 +1,14 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/react'
-import { ChangeEvent, UIEvent } from 'react'
+import { jsx } from '@emotion/react'
 import { useState } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 import { ICity } from '../store/city'
 import { FETCH_CITY, IState, SET_CUR_CITY } from '../store/constants'
 
-export default function CityList () {
-
+export default function CityList() {
   const cityList = useSelector((state: IState) => state.city.cityList)
   const dispatch = useDispatch()
   const history = useHistory()
@@ -18,13 +17,13 @@ export default function CityList () {
     setQuetyCityName(e.target.value)
   }
   const handleSearchClick = () => {
-    dispatch({type: FETCH_CITY, payload: queryCityName})
+    dispatch({ type: FETCH_CITY, payload: queryCityName })
   }
   const handleCityClick = (city: ICity) => {
-    dispatch({type: SET_CUR_CITY, payload: city})
+    dispatch({ type: SET_CUR_CITY, payload: city })
     history.push('/')
   }
-  
+
   return (
     <div>
       <input value={queryCityName} onChange={onCityChange} />

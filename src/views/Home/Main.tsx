@@ -5,7 +5,6 @@ import { imgBasePath } from '../../constant'
 import { IWeatherNow } from '../../store/weather'
 
 export default function Main({ handleClick, weatherNow }: { handleClick: MouseEventHandler, weatherNow: IWeatherNow }): ReactElement {
-
   return (
     <div css={css`
       width: 100%;
